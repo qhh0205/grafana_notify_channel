@@ -1,0 +1,4 @@
+*.pyc
+app.log
+/venv
+/.idea
