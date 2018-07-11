@@ -1,10 +1,10 @@
-* [Grafana 报警通道 Webhook](#grafana-报警通道-webhook)
-    * [Usage:](#usage)
-        * [启动服务](#启动服务)
-        * [微信通道配置](#微信通道配置)
-        * [邮件通道配置 message 中填入如下格式的 json 数据提供报警联系人和信息:](#邮件通道配置-message-中填入如下格式的-json-数据提供报警联系人和信息)
-        * [电话通道配置](#电话通道配置)
-    * [报警文案](#报警文案)
+* [Grafana 报警通道 Webhook](#grafana-%E6%8A%A5%E8%AD%A6%E9%80%9A%E9%81%93-webhook)
+* [Usage:](#usage)
+  * [启动服务](#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1)
+  * [微信通道配置](#%E5%BE%AE%E4%BF%A1%E9%80%9A%E9%81%93%E9%85%8D%E7%BD%AE)
+  * [邮件通道配置](#%E9%82%AE%E4%BB%B6%E9%80%9A%E9%81%93%E9%85%8D%E7%BD%AE)
+  * [电话通道配置](#%E7%94%B5%E8%AF%9D%E9%80%9A%E9%81%93%E9%85%8D%E7%BD%AE)
+* [报警文案](#%E6%8A%A5%E8%AD%A6%E6%96%87%E6%A1%88)
 ### Grafana 报警通道 Webhook
 Grafana 默认提供的报警通道类型不支持微信和电话，可以自己写个 webhook 来提供，配置报警通道时指定 webhook 的 url，然后 webhook 解析来自 Grafana 发送的请求数据，关于 Grafana 的请求数据类型见[这里](http://docs.grafana.org/alerting/notifications/#external-image-store)。
 
@@ -32,7 +32,8 @@ sh setup_venv.sh # 启动虚拟环境
     "msg":"hello, world!"
 }
 ```
-#### 邮件通道配置 message 中填入如下格式的 json 数据提供报警联系人和信息:
+#### 邮件通道配置
+message 中填入如下格式的 json 数据提供报警联系人和信息:
 
 > mail: 邮件地址，如果有多个则用逗号隔开
 
