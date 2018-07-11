@@ -1,3 +1,14 @@
+Table of Contents
+=================
+
+         * [Grafana 报警通道 Webhook](#grafana-报警通道-webhook)
+         * [Usage:](#usage)
+            * [启动服务](#启动服务)
+            * [微信通道配置](#微信通道配置)
+            * [邮件通道配置 message 中填入如下格式的 json 数据提供报警联系人和信息:](#邮件通道配置-message-中填入如下格式的-json-数据提供报警联系人和信息)
+            * [电话通道配置](#电话通道配置)
+         * [报警文案](#报警文案)
+
 ### Grafana 报警通道 Webhook
 Grafana 默认提供的报警通道类型不支持微信和电话，可以自己写个 webhook 来提供，配置报警通道时指定 webhook 的 url，然后 webhook 解析来自 Grafana 发送的请求数据，关于 Grafana 的请求数据类型见[这里](http://docs.grafana.org/alerting/notifications/#external-image-store)。
 
@@ -67,4 +78,16 @@ sh setup_venv.sh # 启动虚拟环境
 
 ### 报警文案
 邮件、微信、电话报警通道的文案在 `app/templates` 目录，可以根据需要调整。
+
+**1.邮件报警文案：**
+
+![image](img/mail_alert_copy.png)
+
+**2.微信报警文案：**
+
+![image](img/wechat_alert_copy.png)
+
+**3.电话报警文案:**
+
+电话报警的文案为配置电话报警是指定的 ```text_to_speech``` 内容
 

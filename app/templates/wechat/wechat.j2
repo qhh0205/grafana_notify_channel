@@ -2,5 +2,7 @@ Time(UTC{{data.get('utc_offset')}}):{{data.get('timestamp')}}
 Title: {{data.get('title')}}
 RuleName: {{data.get('ruleName')}}
 State: {{data.get('state')}}
-Message: {{data.get('msg')}}
-RuleURL: {{data.get('ruleUrl')}}
+Message: {{data.get('msg')}}{% if data.get('evalMatches') %}
+Matched Metrics(metric-value):
+{% for e in data.get('evalMatches') %}{{e.get('metric')}}: {{e.get('value') | float | round(2, 'floor')}}
+{% endfor %}{% endif %}
