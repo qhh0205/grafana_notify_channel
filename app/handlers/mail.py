@@ -26,9 +26,9 @@ bp = Blueprint('mail', __name__)
 def mail_channel():
     req_body = json.loads(request.data)
     message = req_body.get('message')
-    mails = json.loads(message).get('mail')
+    mails = [m.strip() for m in json.loads(message).get('mail').split(',')]
     content = json.loads(message).get('content')
-    if not mail or not content:
+    if not mails or not content:
         abort(400)
     ts = time.time()
     data = req_body
@@ -39,7 +39,7 @@ def mail_channel():
     app = current_app._get_current_object()
     scheduler.add_job(send_mail,
                       'date',
-                      args=[app, mails.split(','), data.get('title'), render_template('mail/mail.j2', data=data)]
+                      args=[app, mails, data.get('title'), render_template('mail/mail.j2', data=data)]
                  )
     return make_response(('OK', 200))
 

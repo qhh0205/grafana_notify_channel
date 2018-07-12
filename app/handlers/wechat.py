@@ -30,9 +30,9 @@ bp = Blueprint('wechat', __name__)
 def wechat_channel():
     req_body     = json.loads(request.data)
     message      = req_body.get('message')
-    wechat       = json.loads(message).get('wechat')
+    wechats      = [w.strip() for w in json.loads(message).get('wechat').split(',')]
     msg          = json.loads(message).get('msg')
-    if not wechat or not msg:
+    if not wechats or not msg:
         abort(400)
     ts = time.time()
     data = req_body
@@ -41,7 +41,7 @@ def wechat_channel():
     data['utc_offset'] = int((datetime.fromtimestamp(ts) - datetime.utcfromtimestamp(ts)).total_seconds() / 3600)
     msg = render_template('wechat/wechat.j2', data=data)
     app = current_app._get_current_object()
-    scheduler.add_job(wechat_sender, 'date', args=[app, wechat.split(','), '', '', msg])
+    scheduler.add_job(wechat_sender, 'date', args=[app, wechats, '', '', msg])
     return make_response(('OK', 200))
 
 

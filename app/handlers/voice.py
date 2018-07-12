@@ -26,7 +26,7 @@ bp = Blueprint('voice', __name__)
 def voice_channel():
     req_body = json.loads(request.data)
     message = req_body.get('message')
-    phone_list = json.loads(message).get('phone').split(',')
+    phone_list = [number.strip() for number in json.loads(message).get('phone').split(',')]
     text_to_speech = json.loads(message).get('text_to_speech')
     if not phone_list or not text_to_speech:
         abort(400)
