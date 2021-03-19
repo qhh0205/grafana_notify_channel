@@ -22,7 +22,7 @@ futures==3.2.0
 idna==2.6
 ipaddress==1.0.22
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 jose==1.0.0
 MarkupSafe==1.0
 Naked==0.1.31
