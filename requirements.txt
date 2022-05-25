@@ -32,7 +32,7 @@ numpy==1.12.1
 pyasn1==0.4.3
 pycparser==2.18
 pycrypto==2.6.1
-PyJWT==1.6.4
+PyJWT==2.4.0
 python-jose==3.0.0
 pytz==2018.4
 PyYAML==3.12
